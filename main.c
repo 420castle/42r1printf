@@ -12,21 +12,12 @@
 
 #include "ft_printf.h"
 
-/*
-char	*get_fspec(char *str, char *list_spec)
-{
-	char *spec_str;
-
-
-}
-*/
-
-void	ft_putptr_pf(void *ptr, char* base, size_t *count)
+void	ft_putptr_pf(void *ptr, char *base, size_t *count)
 {
 	unsigned long	num;
 
 	ft_putstr_pf("0x", count);
-	num = (unsigned long)ptr;	
+	num = (unsigned long)ptr;
 	if (num < 16)
 	{
 		ft_putchar_pf(base[num], count);
@@ -37,49 +28,7 @@ void	ft_putptr_pf(void *ptr, char* base, size_t *count)
 	ft_puthex_ft(num % 16, base, count);
 }
 
-void	ft_format(va_list va, char *str, size_t *count)
-{
-	if (*str == 'c')
-		ft_putchar_pf(va_arg(va, int), count);
-	if (*str == 's')
-		ft_putstr_pf(va_arg(va, char*), count);
-	if (*str == 'p')
-		ft_putptr_pf(va_arg(va, void*), LOW_HEX_BASE, count);		
-	if (*str == 'i' || *str == 'd')
-		ft_putint_pf(va_arg(va, int), count);
-	if (*str == 'x')
-		ft_puthex_ft(va_arg(va, int), LOW_HEX_BASE, count);
-	if (*str == 'X')
-		ft_puthex_ft(va_arg(va, int), UPP_HEX_BASE, count);				
-	if (*str == '%')
-		ft_putchar_pf(*str, count);
-}
-
-int		ft_printf(char const *str, ...)
-{
-	va_list		va;
-	size_t		count;
-
-	if (!str)
-		return (0);
-	count = 0;
-	va_start(va, str);
-	while (*str)
-	{
-		if (*str == '%')
-		{
-			str++;
-			ft_format(va, (char *)str, &count);
-		}
-		else
-			ft_putchar_pf(*str, &count);
-		str++;
-	}
-	va_end(va);
-	return (count);
-}
-
-int		main(void)
+int	main(void)
 {
 	int				num;
 	int				*ptr;

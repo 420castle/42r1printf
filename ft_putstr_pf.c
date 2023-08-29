@@ -18,5 +18,5 @@ void	ft_putstr_pf(char *str, size_t *count)
 	{
 		ft_putchar_pf(*str, count);
 		str++;
-	}	
+	}
 }

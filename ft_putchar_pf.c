@@ -38,16 +38,16 @@ void	ft_putint_pf(int num, size_t *count)
 	}
 	else
 		ft_putint_pf(num / 10, count);
-	ft_putint_pf(num % 10, count);	
+	ft_putint_pf(num % 10, count);
 }
 
-void	ft_puthex_ft(int num, char* base, size_t *count)
+void	ft_puthex_ft(int num, char *base, size_t *count)
 {
 	if (num < 0)
 	{
 		ft_putchar_pf('-', count);
 		num *= -1;
-	}	
+	}
 	if (num < 16)
 	{
 		ft_putchar_pf(base[num], count);
@@ -55,5 +55,5 @@ void	ft_puthex_ft(int num, char* base, size_t *count)
 	}
 	else
 		ft_puthex_ft(num / 16, base, count);
-	ft_puthex_ft(num % 16, base, count);	
+	ft_puthex_ft(num % 16, base, count);
 }
